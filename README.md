@@ -12,18 +12,12 @@ Convert digital photos (like iPhone photos) to look like they were taken on clas
 - **Pipeline Architecture**: Chain effects in optimal order for best results
 - **Buffer Support**: Process images from buffers or files
 
-## Installation
-
-```bash
-npm install film-filter
-```
-
 ## Quick Start
 
 ### Using Presets
 
 ```javascript
-const { applyFilmFilter } = require('film-filter');
+const { applyFilmFilter } = require('./dist/src/index.js');
 
 // Apply Fuji Superia preset
 await applyFilmFilter('input.jpg', 'output.jpg', 'fujiSupertia');
@@ -38,7 +32,7 @@ await applyFilmFilter('input.jpg', 'output.jpg', 'kodak');
 ### Custom Configuration
 
 ```javascript
-const { applyFilmFilter } = require('film-filter');
+const { applyFilmFilter } = require('./dist/src/index.js');
 
 await applyFilmFilter('input.jpg', 'output.jpg', 'fujiSupertia', {
   grain: { intensity: 40, size: 3 },
@@ -49,8 +43,8 @@ await applyFilmFilter('input.jpg', 'output.jpg', 'fujiSupertia', {
 ### Using the Pipeline Directly
 
 ```javascript
-const { FilmFilterPipeline } = require('film-filter');
-const { fujiSupertia } = require('film-filter');
+const { FilmFilterPipeline } = require('./dist/src/pipeline.js');
+const { fujiSupertia } = require('./dist/presets/fujiSupertia.js');
 
 const pipeline = new FilmFilterPipeline(fujiSupertia);
 await pipeline.apply('input.jpg', 'output.jpg');
@@ -60,7 +54,7 @@ await pipeline.apply('input.jpg', 'output.jpg');
 
 ```javascript
 const Sharp = require('sharp');
-const { applyGrain, applyVignette, applyColourGrade } = require('film-filter');
+const { applyGrain, applyVignette, applyColourGrade } = require('./dist/src/effects/grain.js');
 
 let image = Sharp('input.jpg');
 image = await applyColourGrade(image, { temperature: 'warm', saturation: 15 });
@@ -195,7 +189,7 @@ Warm, smooth, and vintage-looking with reduced saturation.
 ### Create a Custom Film Look
 
 ```javascript
-const { FilmFilterPipeline } = require('film-filter');
+const { FilmFilterPipeline } = require('./dist/src/pipeline.js');
 
 const customConfig = {
   colourGrade: {
@@ -226,7 +220,7 @@ await pipeline.apply('photo.jpg', 'film_photo.jpg');
 ```javascript
 const fs = require('fs');
 const path = require('path');
-const { applyFilmFilter } = require('film-filter');
+const { applyFilmFilter } = require('./dist/src/index.js');
 
 async function batchProcess(inputDir, outputDir, preset) {
   const files = fs.readdirSync(inputDir).filter(f => /\.(jpg|png)$/i.test(f));

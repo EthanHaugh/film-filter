@@ -5,6 +5,13 @@ export interface GrainOptions {
   size?: number;      // grain particle size 1-5
 }
 
+// ITU-R BT.601 luma coefficients
+const LUMA_RED = 0.299;
+const LUMA_GREEN = 0.587;
+const LUMA_BLUE = 0.114;
+
+const BLUR_SCALE_FACTOR = 0.3;    // Keeps sigma in subtle range (0–1.2)
+
 /**
  * Apply Grain texture
  * Sharp doesn't have a feature for this (sad) 
@@ -26,6 +33,7 @@ export async function applyGrain(
 
   for (let i = 0; i < pixels.length; i += info.channels) {
     // Generate noise value for this pixel
+    // Use `math.ran() - 0.5 * 2` to return values of -1 and 1, rather than 0 and 1
     const noise = (Math.random() - 0.5) * 2 * grainStrength;
 
     // Film grain is stronger in midtones than highlights/shadows
@@ -33,9 +41,12 @@ export async function applyGrain(
     const red = pixels[i];
     const green = pixels[i + 1];
     const blue = pixels[i + 2];
-    const luminance = 0.299 * red + 0.587 * green + 0.114 * blue;
 
-    // Bell-curve weight: peaks at midtone (128), falls off at shadows and highlights
+    // Multiply ITU-R BT.601 luma coefficients (Didn't know what these were lol)
+    const luminance = LUMA_RED * red + LUMA_GREEN * green + LUMA_BLUE * blue;
+
+    // 128 is the midpoint of the 0–255 pixel range 
+    // Measure how far a pixels luminance is from that midpoint
     const midtoneWeight = 1 - Math.abs(luminance - 128) / 128;
 
     const weightedNoise = noise * midtoneWeight;
@@ -53,7 +64,8 @@ export async function applyGrain(
   });
 
   if (size > 1) {
-    const clumpBlur = (size - 1) * 0.3; // 0.3 to 1.2 — subtle
+    // Size can be 0-5 in the config, bring that down to a resonable sigma value
+    const clumpBlur = (size - 1) * BLUR_SCALE_FACTOR; // 0.3 to 1.2 — subtle
     result = result.blur(clumpBlur);
   }
 

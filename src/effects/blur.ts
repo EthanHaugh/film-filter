@@ -5,7 +5,7 @@ export interface BlurOptions {
 }
 
 /**
- * Apply Gaussian blur to simulate lens softness or motion blur
+ * Apply blur to simulate lens softness or motion blur
  */
 export async function applyBlur(
   image: Sharp.Sharp,

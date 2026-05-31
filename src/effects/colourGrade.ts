@@ -9,7 +9,7 @@ export interface ColourGradeOptions {
 
 /**
  * Apply color grading to match film stock color characteristics
- * Film stocks typically have warm or cool tones
+ * Film cameras typically have warm or cool tones
  */
 export async function applyColourGrade(
   image: Sharp.Sharp,

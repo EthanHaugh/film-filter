@@ -27,13 +27,19 @@ export async function applyVignette(
     for (let x = 0; x < width; x++) {
       const dx = (x - centerX) / maxDist;
       const dy = (y - centerY) / maxDist;
+
+      // Use Pythagoras to find the distance from the centre of the image
       const dist = Math.sqrt(dx ** 2 + dy ** 2);
 
       const overRadius = (dist - radius);
       const clampedOver = Math.min(1, Math.max(0, overRadius));
+
+      // Squaring here prevents the vignette curve being so harsh
       const smoothed = clampedOver ** 2;
 
       const darkAmount = smoothed * intensity;
+
+      // Convert the 0–1 darkening amount into a pixel value of 0–255
       const maskValue = Math.round((1 - darkAmount) * 255);
 
       maskData[y * width + x] = maskValue;
