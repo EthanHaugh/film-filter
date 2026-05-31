@@ -44,6 +44,17 @@ Convert digital photos (like iPhone photos) to look like they were taken on clas
 
 ## Quick Start
 
+### Running via CLI
+
+```
+node -e "require('./dist/src/index.js').applyFilmFilter('<IMAGE-PATH>', '<OUTPUT-PATH>', '<PRESET>').then(() => console.log('Done!'))"
+```
+
+Valid preset values:
+1. `fujiSupertia`
+2. `ilfordHP5`
+3. `kodak`
+
 ### Using Presets
 
 ```javascript
