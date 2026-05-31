@@ -19,7 +19,7 @@ export const fujiSupertia: PipelineConfig = {
     radius: 0.75,
   },
   grain: {
-    intensity: 15,
+    intensity: 30,
     size: 2,
   },
 };

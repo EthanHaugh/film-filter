@@ -2,6 +2,36 @@
 
 Convert digital photos (like iPhone photos) to look like they were taken on classic film cameras. This library applies authentic film emulation effects including color grading, grain, vignetting, and contrast adjustments.
 
+<details>
+
+<summary>Examples</summary>
+
+## Input Image
+![alt text](images/input.jpg "Input Image")
+
+<details>
+<summary>Kodak</summary>
+
+![alt text](images/kodak.jpg "Kodak Output")
+
+</details>
+
+<details>
+<summary>Ilford</summary>
+
+![alt text](images/ilford.jpg "Ilford Output")
+
+</details>
+
+<details>
+<summary>Fuji</summary>
+
+![alt text](images/fuji.jpg "Fuji Output")
+
+</details>
+</details>
+
+
 ## Features
 
 - **Film Stock Presets**: Ready-to-use presets for classic film stocks

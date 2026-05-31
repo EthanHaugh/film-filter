@@ -20,7 +20,7 @@ export const kodak: PipelineConfig = {
     radius: 0.72,
   },
   grain: {
-    intensity: 12,
+    intensity: 30,
     size: 2,
   },
 };
