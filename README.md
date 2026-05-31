@@ -2,6 +2,8 @@
 
 Convert digital photos (like iPhone photos) to look like they were taken on classic film cameras. This library applies authentic film emulation effects including color grading, grain, vignetting, and contrast adjustments.
 
+Python is probably the best language this could've been written in, but this was a nice challenge.
+
 <details>
 
 <summary>Examples</summary>
