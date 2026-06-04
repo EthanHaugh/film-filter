@@ -322,9 +322,19 @@ film-filter/
 
 ## Testing
 
-This project uses [Vitest](https://vitest.dev/) for unit testing. The test suite covers all effects, presets, and the pipeline orchestration with 100% coverage.
+This project uses [Vitest](https://vitest.dev/) for unit testing. The test suite covers all effects, presets, and the pipeline orchestration with 100% coverage. 
 
 ### Running Tests
+
+Tests run automatically as part of the pre-commit hook. To enable the pre-commit hook, run:
+
+```bash
+git config --local core.hooksPath .githooks/
+```
+
+This tells git to use the hooks in the `.githooks/` directory. After setting this up, tests will run before every commit and block commits with failing tests.
+
+To run tests manually:
 
 ```bash
 # Run tests in watch mode (recommended for development)
