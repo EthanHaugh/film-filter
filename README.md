@@ -4,6 +4,15 @@ Convert digital photos (like iPhone photos) to look like they were taken on clas
 
 Python is probably the best language this could've been written in, but this was a nice challenge.
 
+## Table of Contents
+
+- [Examples](#examples)
+- [Features](#features)
+- [Quick Start](#quick-start)
+- [API Reference](#api-reference)
+- [Presets](#presets)
+- [Testing](#testing)
+
 <details>
 
 <summary>Examples</summary>
@@ -286,17 +295,57 @@ film-filter/
 ├── src/
 │   ├── index.ts              # Main exports
 │   ├── pipeline.ts           # Effect pipeline orchestrator
-│   └── effects/
-│       ├── blur.ts           # Gaussian blur effect
-│       ├── colourGrade.ts    # Color grading effect
-│       ├── contrast.ts       # Contrast adjustment
-│       ├── grain.ts          # Film grain effect
-│       └── vignette.ts       # Vignette effect
+│   ├── effects/
+│   │   ├── blur.ts           # Gaussian blur effect
+│   │   ├── colourGrade.ts    # Color grading effect
+│   │   ├── contrast.ts       # Contrast adjustment
+│   │   ├── grain.ts          # Film grain effect
+│   │   └── vignette.ts       # Vignette effect
+│   └── tests/
+│       ├── blur.test.ts
+│       ├── colourGrade.test.ts
+│       ├── contrasts.test.ts
+│       ├── grain.test.ts
+│       ├── pipeline.test.ts
+│       ├── presets.test.ts
+│       └── vignette.test.ts
 ├── presets/
 │   ├── fujiSupertia.ts       # Fujifilm Superia preset
 │   ├── ilfordHP5.ts          # Ilford HP5 preset
 │   └── kodak.ts              # Kodak Portra preset
 ├── dist/                     # Compiled JavaScript
 ├── package.json
-└── tsconfig.json
+├── tsconfig.json
+├── vitest.config.ts
+└── README.md
 ```
+
+## Testing
+
+This project uses [Vitest](https://vitest.dev/) for unit testing. The test suite covers all effects, presets, and the pipeline orchestration with 100% coverage.
+
+### Running Tests
+
+```bash
+# Run tests in watch mode (recommended for development)
+npm test
+
+# Run tests once
+npm test:run
+
+# View test results in interactive UI
+npm test:ui
+
+# Generate coverage report
+npm test:coverage
+```
+
+### Test Coverage
+
+The project includes comprehensive tests for:
+
+- **Effects** (`src/tests/effects/*.test.ts`): Unit tests for blur, grain, vignette, color grade, and contrast effects
+- **Pipeline** (`src/tests/pipeline.test.ts`): Tests for the `apply()` and `applyToBuffer()` methods, effect ordering, and configuration management
+- **Presets** (`src/tests/presets.test.ts`): Validation of film stock preset definitions
+
+All test files should be placed in `src/tests/` and follow the naming convention `*.test.ts` or `*.spec.ts`.

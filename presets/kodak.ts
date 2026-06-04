@@ -12,7 +12,7 @@ export const kodak: PipelineConfig = {
     lightness: 5,
   },
   contrast: {
-    contrast: 5, // Slight contrast reduction for smooth tones
+    contrast: 5, 
     brightness: 8,
   },
   vignette: {

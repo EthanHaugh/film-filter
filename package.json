@@ -5,9 +5,16 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
   },
-  "keywords": ["film", "filter", "photography"],
+  "keywords": [
+    "film",
+    "filter",
+    "photography"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
@@ -16,7 +23,9 @@
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "typescript": "^5.0.0"
+    "@vitest/coverage-v8": "^4.1.8",
+    "@vitest/ui": "^4.1.8",
+    "typescript": "^5.0.0",
+    "vitest": "^4.1.8"
   }
 }
-

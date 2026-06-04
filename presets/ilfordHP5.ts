@@ -6,11 +6,11 @@ import { PipelineConfig } from '../src/pipeline';
  */
 export const ilfordHP5: PipelineConfig = {
   colourGrade: {
-    saturation: -100, // Full desaturation for B&W
+    saturation: -100, 
     lightness: 0,
   },
   contrast: {
-    contrast: 35, // High contrast for dramatic effect
+    contrast: 35, 
     brightness: -5,
   },
   vignette: {
@@ -19,6 +19,6 @@ export const ilfordHP5: PipelineConfig = {
   },
   grain: {
     intensity: 300,
-    size: 1, // Fine grain typical of HP5
+    size: 1, 
   },
 };
